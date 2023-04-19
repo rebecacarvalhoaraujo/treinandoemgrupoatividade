@@ -1,5 +1,6 @@
 const express = require('express');
 const ong = express.Router();
+const Ong = require('../models/Ong');
 
 ong.route('/')
 .get(async (req, res) => {
