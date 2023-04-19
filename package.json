@@ -1,0 +1,27 @@
+{
+  "name": "treinandoemgrupoatividade",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rebecacarvalhoaraujo/treinandoemgrupoatividade.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rebecacarvalhoaraujo/treinandoemgrupoatividade/issues"
+  },
+  "homepage": "https://github.com/rebecacarvalhoaraujo/treinandoemgrupoatividade#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.2.3",
+    "sequelize": "^6.31.0"
+  }
+}
