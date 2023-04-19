@@ -27,7 +27,8 @@ Ong.init({
 {
     sequelize, 
     modelName:'ong', 
-    tableName: 'ongs'
+    tableName: 'ongs',
+    paranoid: true
 });
 
 Ong.hasMany(Doacao);
