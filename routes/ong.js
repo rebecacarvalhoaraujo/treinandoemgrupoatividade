@@ -31,13 +31,37 @@ ong.route('/')
     
 })
 .put(async (req, res) => {
-    res.json({mensagem: "rota ong PUT"})
+    const {nome, tipo, desc, cnpj, data_criacao} = req.body;
+
+    if (!nome || !tipo || !desc || !cnpj || !data_criacao) {
+        return res.status(400).json({ mensagem: "campo obrigatório não informado" });
+    }
+
+    const ongEncontrada = await Ong.findOne({where: { cnpj } });
+
+    if(!ongEncontrada) {
+        return res.status(400).json({ mensagem: "Ong não encontrada" });
+    }
+
+    try {
+        await ongEncontrada.update({ nome, tipo, desc, data_criacao });
+        re.status(200).json({ mensagem: 'Ong atualizada com sucesso, id: ${ongEncontrada.id}'})
+    }catch (err) {
+        res.status(500).json(err);
+    }
+
 })
 .delete(async (req, res) => {
     const { id } = req.body;
 
         if (!id) {
             return res.status(400).json({ mensagem: "campo obrigatório não informado" });
+        }
+
+        const ongEncontrada = Dog.findByPk(id);
+
+        if (!ongEncontrada) {
+            return res.status(400).json({ mensagem: "Ong não encontrada" });
         }
 
         try{

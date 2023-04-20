@@ -22,6 +22,10 @@ Ong.init({
     data_criacao:{
         type: DataTypes.DATE,
         allowNull: false
+    },
+    desc:{
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, 
 {
