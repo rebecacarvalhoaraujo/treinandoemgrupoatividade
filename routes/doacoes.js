@@ -8,8 +8,6 @@ doacoes.route('/')
     .get(async (req, res) => {
         const { ongId } = req.query;
 
-
-
         try {
             if (ongId) {
                 const ongEncontrada = await Ong.findOne({ where: { id: ongId } });
@@ -24,8 +22,9 @@ doacoes.route('/')
                     ],
                     where: { ongId }
                 });
-
+                
                 res.status(200).json({mensagem: `A Ong: ${ongEncontrada.nome} recebeu R$ ${total.valor} em doações`});
+
             } else {
                 const doacoes = await Doacao.findAll();
                 res.status(200).json(doacoes);

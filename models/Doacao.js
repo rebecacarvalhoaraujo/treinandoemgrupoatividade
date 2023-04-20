@@ -16,7 +16,8 @@ Doacao.init({
 {
     sequelize, 
     modelName:'doacao', 
-    tableName: 'doacoes'
+    tableName: 'doacoes',
+    paranoid: true   
 });
 
 module.exports = Doacao;

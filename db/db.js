@@ -18,7 +18,7 @@ const sequelize = new Sequelize(
     });
 
 // Sincronize os modelos com o banco de dados
-sequelize.sync({force:true})
+sequelize.sync()
     .then(() => {
         console.log('Tabela sincronizada com sucesso!');
     })

@@ -1,1 +1,207 @@
-{}
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Api ONG",
+      "version": "1.0.0",
+      "description": "Exemplo de API para gerenciar o cadastro de ongs e gerar doações"
+    },
+    "paths": {
+      "/ongs": {
+        "get": {
+          "summary": "Obter todas as ONGs",
+          "responses": {
+            "200": {
+              "description": "Lista de ONGs"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        },
+        "post": {
+          "summary": "Criar nova ONG",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ong"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Ong criada com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OngSuccess"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Campo obrigatório não informado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        },
+        "put": {
+          "summary": "Atualizar ONG existente",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateOng"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Ong atualizada com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessMessage"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Campo obrigatório não informado"
+            },
+            "404": {
+              "description": "Ong não encontrada"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar ONG existente",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteOng"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Ong deletada com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessMessage"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Campo obrigatório não informado"
+            },
+            "404": {
+              "description": "Ong não encontrada"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Ong": {
+          "type": "object",
+          "properties": {
+            "cnpj": {
+              "type": "string",
+              "description": "CNPJ da ONG",
+              "example": "32979648000148"
+            },
+            "nome": {
+              "type": "string",
+              "description": "Nome da ONG",
+              "example": "ONG Amor Animal"
+            },
+            "tipo": {
+              "type": "string",
+              "description": "Tipo da ONG",
+              "example": "Proteção Animal"
+            },
+            "data_criacao": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Data de criação da ONG",
+              "example": "2023/04/20"
+            },
+            "desc": {
+              "type": "string",
+              "description": "Descrição da ONG",
+              "example": "ONG que busca cuidar de animais abandonados"
+            }
+          },
+          "required": ["cnpj", "nome", "tipo", "data_criacao", "desc"]
+        },
+        "OngSuccess": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "ID da ONG",
+              "example": 1
+            },
+            "cnpj": {
+              "type": "string",
+              "description": "CNPJ da ONG",
+              "example": "32979648000148"
+            },
+            "nome": {
+              "type": "string",
+              "description": "Nome da ONG",
+              "example": "ONG Amor Animal"
+            },
+            "tipo": {
+              "type": "string",
+              "description": "Tipo da ONG",
+              "example": "Proteção Animal"
+            },
+            "data_criacao": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Data de criação da ONG",
+              "example": "2023-04-20T03:00:00.000Z"
+            },
+            "desc": {
+              "type": "string",
+              "description": "Descrição da ONG",
+              "example": "ONG que busca cuidar de animais abandonados"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Data de inclusão do registro da ONG no banco de dados",
+              "example": "2023-04-20T19:42:24.455Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Data do último update do registro da ONG no banco de dados",
+              "example": "2023-04-20T19:42:24.455Z"
+            }
+          },
+          "required": ["cnpj", "nome", "tipo", "data_criacao", "desc"]
+        }
+      }
+    }
+  }
